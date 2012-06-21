@@ -1,5 +1,5 @@
-describe("javascripsum", function() {
+describe("Javascripsum", function() {
     it("exists", function() {
-        expect(javascripsum).toBeDefined();
+        expect(Javascripsum).toBeDefined();
     });
 });

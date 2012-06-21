@@ -1,1 +1,3 @@
-var javascripsum = {};
+var Javascripsum = {
+    Models: {}
+};
