@@ -1,8 +1,8 @@
-describe("Javascripsum.Models.WordList", function() {
+describe("Javascripsum.Models.PhraseList", function() {
     var model;
 
     beforeEach(function() {
-        model = new Javascripsum.Models.WordList({id: "fruit"});
+        model = new Javascripsum.Models.PhraseList({id: "fruit"});
     });
 
     describe("url", function() {

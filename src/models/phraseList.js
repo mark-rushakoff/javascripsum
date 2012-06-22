@@ -1,4 +1,4 @@
-Javascripsum.Models.WordList = Backbone.Model.extend({
+Javascripsum.Models.PhraseList = Backbone.Model.extend({
     url: function() {
         return "topics/" + this.id + ".json";
     }
