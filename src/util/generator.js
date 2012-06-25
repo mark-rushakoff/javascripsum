@@ -8,8 +8,7 @@ _.extend(Javascripsum.Util.Generator.prototype, {
         var phrases = this.model.phrases();
 
         var sentence = _.map(_.range(numPhrases), function() {
-            var index = Math.floor(Math.random() * phrases.length); 
-            return phrases[index];
+            return _.sample(phrases);
         });
 
         sentence[0] = _.string.capitalize(sentence[0]);
