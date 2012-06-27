@@ -19,9 +19,13 @@ describe("Javascripsum.Util.Generator", function() {
         });
 
         it("defaults to a variable number of phrases", function() {
-            var sentence = generator.sentence();
-            expect(_.string.startsWith(sentence, "Blah ")).toBeTruthy();
-            expect(_.string.endsWith(sentence, " blah.")).toBeTruthy();
+            var makeSentence = function() { return generator.sentence().split(" "); };
+            var sentenceLengths = _.chain(_.range(100)).map(makeSentence).pluck("length").value();
+
+            expect(sentenceLengths).toContain(3);
+            expect(sentenceLengths).toContain(4);
+            expect(sentenceLengths).toContain(5);
+            expect(sentenceLengths).toContain(6);
         });
 
         it("will pick random words", function() {
