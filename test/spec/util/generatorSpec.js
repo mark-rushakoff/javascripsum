@@ -11,7 +11,7 @@ describe("Javascripsum.Util.Generator", function() {
 
     describe("#sentence", function() {
         beforeEach(function() {
-            spyOn(model, "phrases").andReturn(["blah"]);
+            spyOn(model, "phrases").andReturn([{phrase: "blah"}]);
         });
 
         it("accepts a parameter for the number of phrases", function() {
@@ -25,7 +25,7 @@ describe("Javascripsum.Util.Generator", function() {
         });
 
         it("will pick random words", function() {
-            model.phrases.andReturn(["boo", "hoo"]);
+            model.phrases.andReturn([{phrase: "boo"}, {phrase: "hoo"}]);
             var sentence = generator.sentence(50);
             expect(sentence.indexOf("boo")).toBeGreaterThan(3);
             expect(sentence.indexOf("hoo")).toBeGreaterThan(3);

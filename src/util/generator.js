@@ -5,7 +5,7 @@ Javascripsum.Util.Generator = function(model) {
 _.extend(Javascripsum.Util.Generator.prototype, {
     sentence: function(numPhrases) {
         numPhrases || (numPhrases = 3);
-        var phrases = this.model.phrases();
+        var phrases = _.pluck(this.model.phrases(), "phrase");
 
         var sentence = _.map(_.range(numPhrases), function() {
             return _.sample(phrases);
