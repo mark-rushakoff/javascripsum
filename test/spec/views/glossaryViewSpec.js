@@ -27,7 +27,7 @@ describe("Javascripsum.Views.GlossaryView", function() {
             expect(view.$("dl dt:eq(1) a")).not.toExist();
         });
 
-        it("generates a link in a dt for each item with a URL", function() {
+        it("fills in definition text when available", function() {
             model.set("phrases", [{phrase: "foo", definition: "A metasyntactic variable"}, {phrase: "bar"}]);
             view.render();
             expect(view.$("dl dt").length).toBe(2);
