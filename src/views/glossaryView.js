@@ -13,5 +13,6 @@ Javascripsum.Views.GlossaryView = Backbone.View.extend({
         });
 
         this.$el.empty().append($list);
+        return this;
     }
 });
