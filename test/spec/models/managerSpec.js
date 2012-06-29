@@ -3,6 +3,7 @@ describe("Javascripsum.Models.Manager", function() {
         var model;
         beforeEach(function() {
             model = new Javascripsum.Models.Manager();
+            model.fetch();
         });
 
         it("fetches from the right url", function() {
