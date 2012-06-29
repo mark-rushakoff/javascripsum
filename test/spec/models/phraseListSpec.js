@@ -24,7 +24,7 @@ describe("Javascripsum.Models.PhraseList", function() {
                         { phrase: "durian", url: 'http://en.wikipedia.org/wiki/Durian' }
                     ],
                     authors: [
-                        { name: "Orange Pineapple", email: "orange@pineapple.com" },
+                        { name: "Orange Pineapple", url: "http://www.orangepineapple.com" },
                         { name: "Lemon Mango" }
                     ]
                 };
@@ -42,7 +42,7 @@ describe("Javascripsum.Models.PhraseList", function() {
 
             it("can return the authors", function() {
                 expect(model.authors()).toEqual([
-                    { name: "Orange Pineapple", email: "orange@pineapple.com" },
+                    { name: "Orange Pineapple", url: "http://www.orangepineapple.com" },
                     { name: "Lemon Mango" }
                 ]);
             });
