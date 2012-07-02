@@ -25,10 +25,24 @@ describe("Javascripsum.Views.ApplicationView", function() {
             expect(view.addStylesheet).not.toHaveBeenCalledWith("traditional");
         });
 
-        xit("renders a dropdown", function() {
-            var $select = $root.find("select");
-            expect($select).toExist();
-            expect($select.val()).toBe("traditional");
+        describe("the ipsum dropdown", function() {
+            var $select;
+            beforeEach(function() {
+                $select = $root.find("select");
+            });
+
+            it("renders", function() {
+                expect($select).toExist();
+                expect($select.val()).toBe("traditional");
+            });
+
+            it("updates the body class when changed", function() {
+                $select.val("other").trigger("change");
+                expect($root).toHaveClass("other");
+
+                $select.val("traditional").trigger("change");
+                expect($root).not.toHaveClass("other");
+            });
         });
     });
 });
