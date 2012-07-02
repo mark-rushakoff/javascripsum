@@ -43,6 +43,14 @@ describe("Javascripsum.Views.ApplicationView", function() {
                 $select.val("traditional").trigger("change");
                 expect($root).not.toHaveClass("other");
             });
+
+            it("updates the phraseList", function() {
+                expect(view.phraseList.id).toBe("traditional");
+                clearAjaxRequests();
+                $select.val("other").trigger("change");
+                expect(view.phraseList.id).toBe("other");
+                expect(mostRecentAjaxRequest().url).toBe("topics/other.json");
+            });
         });
     });
 });

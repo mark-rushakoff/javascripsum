@@ -27,6 +27,9 @@ Javascripsum.Views.ApplicationView = Backbone.View.extend({
         if (selectedIpsum.hasCss) {
             this.$el.addClass(selectedIpsum.name);
         }
+
+        this.phraseList = new Javascripsum.Models.PhraseList({id: selectedIpsum.name});
+        this.phraseList.fetch();
     },
 
     addStylesheet: function() {}
