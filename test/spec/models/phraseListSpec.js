@@ -23,7 +23,7 @@ describe("Javascripsum.Models.PhraseList", function() {
                         { phrase: "cherry", definition: 'A fruit often found in slot machines' },
                         { phrase: "durian", url: 'http://en.wikipedia.org/wiki/Durian' }
                     ],
-                    authors: [
+                    editors: [
                         { name: "Orange Pineapple", url: "http://www.orangepineapple.com" },
                         { name: "Lemon Mango" }
                     ]
@@ -40,8 +40,8 @@ describe("Javascripsum.Models.PhraseList", function() {
                 ]);
             });
 
-            it("can return the authors", function() {
-                expect(model.authors()).toEqual([
+            it("can return the editors", function() {
+                expect(model.editors()).toEqual([
                     { name: "Orange Pineapple", url: "http://www.orangepineapple.com" },
                     { name: "Lemon Mango" }
                 ]);

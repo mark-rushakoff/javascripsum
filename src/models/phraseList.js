@@ -7,7 +7,7 @@ Javascripsum.Models.PhraseList = Backbone.Model.extend({
         return this.get("phrases");
     },
 
-    authors: function() {
-        return this.get("authors");
+    editors: function() {
+        return this.get("editors");
     }
 });
