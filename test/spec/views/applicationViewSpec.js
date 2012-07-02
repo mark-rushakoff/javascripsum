@@ -25,6 +25,11 @@ describe("Javascripsum.Views.ApplicationView", function() {
             expect(view.addStylesheet).not.toHaveBeenCalledWith("traditional");
         });
 
+        it("puts the editor view on the root element", function() {
+            expect($root).toContain(view.editorView.$el);
+            expect(view.editorView.model).toBe(view.phraseList);
+        });
+
         describe("the ipsum dropdown", function() {
             var $select;
             beforeEach(function() {

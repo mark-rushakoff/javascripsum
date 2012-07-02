@@ -17,8 +17,11 @@ Javascripsum.Views.ApplicationView = Backbone.View.extend({
             }
         }, this);
         $select.find("option:eq(0)").prop("selected", true);
+
+        this.editorView = new Javascripsum.Views.EditorView();
+
         this.onIpsumSelected();
-        this.$el.append($select);
+        this.$el.append($select).append(this.editorView.$el);
     },
 
     onIpsumSelected: function() {
@@ -28,8 +31,9 @@ Javascripsum.Views.ApplicationView = Backbone.View.extend({
             this.$el.addClass(selectedIpsum.name);
         }
 
-        this.phraseList = new Javascripsum.Models.PhraseList({id: selectedIpsum.name});
-        this.phraseList.fetch();
+        var phraseList = this.phraseList = new Javascripsum.Models.PhraseList({id: selectedIpsum.name});
+        this.editorView.model = phraseList;
+        this.phraseList.fetch().done(_.bind(this.editorView.render, this.editorView));
     },
 
     addStylesheet: function() {}
