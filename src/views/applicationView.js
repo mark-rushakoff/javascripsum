@@ -1,11 +1,13 @@
 Javascripsum.Views.ApplicationView = Backbone.View.extend({
     events: {
+        "click a.generate": "generateLinkClicked",
         "change select": "onIpsumSelected"
     },
 
     initialize: function() {
         this.model = new Javascripsum.Models.Manager();
         this.model.fetch().done(_.bind(this.setUp, this));
+        this.generator = new Javascripsum.Util.Generator(this.model);
     },
 
     setUp: function() {
@@ -18,10 +20,16 @@ Javascripsum.Views.ApplicationView = Backbone.View.extend({
         }, this);
         $select.find("option:eq(0)").prop("selected", true);
 
+        this.$output = $("<div class='output'></div>");
+
         this.editorView = new Javascripsum.Views.EditorView();
 
         this.onIpsumSelected();
-        this.$el.append($select).append(this.editorView.$el);
+        this.$el.
+            append($select).
+            append("<a href='#' class='generate'>Generate</a>").
+            append(this.$output).
+            append(this.editorView.$el);
     },
 
     onIpsumSelected: function() {
@@ -31,9 +39,22 @@ Javascripsum.Views.ApplicationView = Backbone.View.extend({
             this.$el.addClass(selectedIpsum.name);
         }
 
-        var phraseList = this.phraseList = new Javascripsum.Models.PhraseList({id: selectedIpsum.name});
-        this.editorView.model = phraseList;
-        this.phraseList.fetch().done(_.bind(this.editorView.render, this.editorView));
+        this.generator.model =
+            this.editorView.model =
+            this.phraseList = new Javascripsum.Models.PhraseList({id: selectedIpsum.name});
+
+        this.phraseList.fetch().
+            done(_.bind(this.editorView.render, this.editorView));
+    },
+
+    generateLinkClicked: function(e) {
+        e.preventDefault();
+        this.renderParagraphs();
+    },
+
+    renderParagraphs: function() {
+        var $paragraph = $("<p></p>").text(this.generator.paragraph());
+        this.$output.empty().append($paragraph);
     },
 
     addStylesheet: function() {}

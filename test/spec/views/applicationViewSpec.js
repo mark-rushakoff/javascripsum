@@ -20,6 +20,12 @@ describe("Javascripsum.Views.ApplicationView", function() {
             mostRecentAjaxRequest().response({status: 200});
         });
 
+        it("re-generates the paragraphs when the generate link is clicked", function() {
+            spyOn(view.generator, "paragraph").andReturn("Foo bar.");
+            view.$("a.generate").click();
+            expect(view.$(".output p").text()).toBe("Foo bar.");
+        });
+
         it("adds the stylesheet for the ipsums with css", function() {
             expect(view.addStylesheet).toHaveBeenCalledWith("other");
             expect(view.addStylesheet).not.toHaveBeenCalledWith("traditional");
@@ -41,20 +47,22 @@ describe("Javascripsum.Views.ApplicationView", function() {
                 expect($select.val()).toBe("traditional");
             });
 
-            it("updates the body class when changed", function() {
-                $select.val("other").trigger("change");
-                expect($root).toHaveClass("other");
+            describe("when picking a different option", function() {
+                it("updates the body class", function() {
+                    $select.val("other").trigger("change");
+                    expect($root).toHaveClass("other");
 
-                $select.val("traditional").trigger("change");
-                expect($root).not.toHaveClass("other");
-            });
+                    $select.val("traditional").trigger("change");
+                    expect($root).not.toHaveClass("other");
+                });
 
-            it("updates the phraseList", function() {
-                expect(view.phraseList.id).toBe("traditional");
-                clearAjaxRequests();
-                $select.val("other").trigger("change");
-                expect(view.phraseList.id).toBe("other");
-                expect(mostRecentAjaxRequest().url).toBe("topics/other.json");
+                it("updates the phraseList", function() {
+                    expect(view.phraseList.id).toBe("traditional");
+                    clearAjaxRequests();
+                    $select.val("other").trigger("change");
+                    expect(view.phraseList.id).toBe("other");
+                    expect(mostRecentAjaxRequest().url).toBe("topics/other.json");
+                });
             });
         });
     });
