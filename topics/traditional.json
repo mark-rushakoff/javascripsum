@@ -1,0 +1,12 @@
+{
+    "phrases": [ 
+        {"phrase": "lorem"},
+        {"phrase": "ipsum"},
+        {"phrase": "dolor"},
+        {"phrase": "sit"},
+        {"phrase": "amet"},
+        {"phrase": "consectetur"},
+        {"phrase": "adipisicing"},
+        {"phrase": "elit"}
+    ]
+}

@@ -1,0 +1,26 @@
+<html>
+    <head>
+        <script type="text/javascript" src="//ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
+        <script type="text/javascript" src="vendor/lodash.min.js"></script>
+        <script type="text/javascript" src="vendor/underscore.string.min.js"></script>
+        <script type="text/javascript" src="vendor/backbone.min.js"></script>
+
+        <script type="text/javascript" src="src/bootstrap.js"></script>
+        <script type="text/javascript" src="src/javascripsum.js"></script>
+        <script type="text/javascript" src="src/util/generator.js"></script>
+        <script type="text/javascript" src="src/models/manager.js"></script>
+        <script type="text/javascript" src="src/models/phraseList.js"></script>
+        <script type="text/javascript" src="src/views/applicationView.js"></script>
+        <script type="text/javascript" src="src/views/editorView.js"></script>
+        <script type="text/javascript" src="src/views/glossaryView.js"></script>
+        <script type="text/javascript" src="src/views/ipsumView.js"></script>
+
+        <script type="text/javascript">
+            $(function() {
+                window.app = new Javascripsum.Views.ApplicationView({el: $("body")});
+            });
+        </script>
+    </head>
+    <body>
+    </body>
+</html>
