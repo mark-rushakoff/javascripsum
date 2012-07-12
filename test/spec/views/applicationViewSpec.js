@@ -21,9 +21,21 @@ describe("Javascripsum.Views.ApplicationView", function() {
         });
 
         it("re-generates the paragraphs when the generate link is clicked", function() {
-            spyOn(view.generator, "paragraph").andReturn("Foo bar.");
+            spyOn(view, "numParagraphs").andReturn(2);
+
+            var counter = 0;
+            spyOn(view.generator, "paragraph").andCallFake(function() {
+                if (!counter) {
+                    counter++;
+                    return "Foo bar.";
+                }
+
+                return "Baz quux.";
+            });
+
             view.$("a.generate").click();
-            expect(view.$(".output p").text()).toBe("Foo bar.");
+            expect(view.$(".output p:eq(0)").text()).toBe("Foo bar.");
+            expect(view.$(".output p:eq(1)").text()).toBe("Baz quux.");
         });
 
         it("adds the stylesheet for the ipsums with css", function() {

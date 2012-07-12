@@ -53,8 +53,14 @@ Javascripsum.Views.ApplicationView = Backbone.View.extend({
     },
 
     renderParagraphs: function() {
-        var $paragraph = $("<p></p>").text(this.generator.paragraph());
-        this.$output.empty().append($paragraph);
+        this.$output.empty();
+        _.times(this.numParagraphs(), function() {
+            this.$output.append($("<p></p>").text(this.generator.paragraph()));
+        }, this);
+    },
+
+    numParagraphs: function() {
+        return 3;
     },
 
     addStylesheet: function() {}
