@@ -1,7 +1,7 @@
 Javascripsum.Views.EditorView = Backbone.View.extend({
     render: function() {
         var editors = this.model.editors();
-        if (editors.length) {
+        if (editors && editors.length) {
             var $ul = $("<ul></ul>");
             _.each(editors, function(editor) {
                 var $editorLi = $("<li></li>");

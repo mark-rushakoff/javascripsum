@@ -12,6 +12,12 @@ describe("Javascripsum.Views.EditorView", function() {
                 view.render();
                 expect(view.$el).toBeEmpty();
                 expect(view.$el).toHaveClass("empty");
+
+                // if editors wasn't in the JSON...
+                model.editors.andReturn(null);
+                view.render();
+                expect(view.$el).toBeEmpty();
+                expect(view.$el).toHaveClass("empty");
             });
         });
 
