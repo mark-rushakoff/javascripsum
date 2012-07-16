@@ -21,12 +21,14 @@ Javascripsum.Views.ApplicationView = Backbone.View.extend({
         $select.find("option:eq(0)").prop("selected", true);
 
         this.$output = $("<div class='output'></div>");
+        this.$numParagraphs = $("<input type='number' min='1' value='3'/>");
 
         this.editorView = new Javascripsum.Views.EditorView();
 
         this.onIpsumSelected();
         this.$el.
             append($select).
+            append(this.$numParagraphs).
             append("<a href='#' class='generate'>Generate</a>").
             append(this.$output).
             append(this.editorView.$el);
@@ -60,7 +62,7 @@ Javascripsum.Views.ApplicationView = Backbone.View.extend({
     },
 
     numParagraphs: function() {
-        return 3;
+        return this.$numParagraphs.val();
     },
 
     addStylesheet: function() {}
