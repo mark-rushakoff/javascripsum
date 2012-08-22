@@ -48,6 +48,11 @@ describe("Javascripsum.Views.ApplicationView", function() {
             expect(view.editorView.model).toBe(view.phraseList);
         });
 
+        it("puts the glossary view on the root element", function() {
+            expect($root).toContain(view.glossaryView.$el);
+            expect(view.glossaryView.model).toBe(view.phraseList);
+        });
+
         describe("the ipsum dropdown", function() {
             var $select;
             beforeEach(function() {
