@@ -24,6 +24,7 @@ Javascripsum.Views.ApplicationView = Backbone.View.extend({
         this.$numParagraphs = $("<input type='number' min='1' value='3'/>");
 
         this.editorView = new Javascripsum.Views.EditorView();
+        this.glossaryView = new Javascripsum.Views.GlossaryView();
 
         this.onIpsumSelected();
         this.$el.
@@ -31,7 +32,8 @@ Javascripsum.Views.ApplicationView = Backbone.View.extend({
             append(this.$numParagraphs).
             append("<a href='#' class='generate'>Generate</a>").
             append(this.$output).
-            append(this.editorView.$el);
+            append(this.editorView.$el).
+            append(this.glossaryView.$el);
     },
 
     onIpsumSelected: function() {
@@ -43,9 +45,11 @@ Javascripsum.Views.ApplicationView = Backbone.View.extend({
 
         this.generator.model =
             this.editorView.model =
+            this.glossaryView.model =
             this.phraseList = new Javascripsum.Models.PhraseList({id: selectedIpsum.name});
 
         this.phraseList.fetch().
+            done(_.bind(this.glossaryView.render, this.glossaryView)).
             done(_.bind(this.editorView.render, this.editorView));
     },
 
