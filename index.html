@@ -4,9 +4,11 @@
         <script type="text/javascript" src="vendor/underscore.min.js"></script>
         <script type="text/javascript" src="vendor/underscore.string.min.js"></script>
         <script type="text/javascript" src="vendor/backbone.min.js"></script>
+        <script type="text/javascript" src="vendor/backbone.marionette.min.js"></script>
 
         <script type="text/javascript" src="src/bootstrap.js"></script>
         <script type="text/javascript" src="src/javascripsum.js"></script>
+        <script type="text/javascript" src="src/initializers/app.js"></script>
         <script type="text/javascript" src="src/util/generator.js"></script>
         <script type="text/javascript" src="src/models/manager.js"></script>
         <script type="text/javascript" src="src/models/phraseList.js"></script>
@@ -14,6 +16,14 @@
         <script type="text/javascript" src="src/views/editorView.js"></script>
         <script type="text/javascript" src="src/views/glossaryView.js"></script>
         <script type="text/javascript" src="src/views/ipsumView.js"></script>
+
+        <script id="main-tpl" type="text/template">
+          <div id="ipsum-selector"></div>
+          <div id="output"></div>
+          <div id="num-paragraphs-selector"></div>
+          <div id="editor-container"></div>
+          <div id="glossary-container"></div>
+        </script>
 
         <script type="text/javascript">
             $(function() {
