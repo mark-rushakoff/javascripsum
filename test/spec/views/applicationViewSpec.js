@@ -17,7 +17,7 @@ describe("Javascripsum.Views.ApplicationView", function() {
     describe("when the model fetch completes", function() {
         beforeEach(function() {
             spyOn(view.model, "ipsums").andReturn([{name: "traditional", hasCss: false}, {name: "other", hasCss: true}]);
-            mostRecentAjaxRequest().response({status: 200});
+            mostRecentAjaxRequest().response({status: 200, responseText: "{}"});
         });
 
         it("re-generates the paragraphs when the generate link is clicked", function() {
