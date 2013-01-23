@@ -29,14 +29,22 @@
         <script id="ipsum-selector-tpl" type="text/template">
           <select>
             <% _.each(ipsums, function(ipsum) { %>
-            <option><%= ipsum %></option>
-            <% } %>
+            <option><%= ipsum.name %></option>
+            <% }); %>
           </select>
         </script>
 
         <script type="text/javascript">
             $(function() {
                 window.app = new Javascripsum.Views.ApplicationView({el: $("body")});
+
+                //window.includeMarionette = true;
+                if (window.includeMarionette) {
+                  var doc = $("<div></div>");
+                  window.marionetteApp = Javascripsum.Factories.makeApp();
+                  window.marionetteApp.start({documentSelector: doc});
+                  $("body").append(doc);
+                }
             });
         </script>
     </head>
