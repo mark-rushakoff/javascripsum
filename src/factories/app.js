@@ -2,7 +2,7 @@
 
 function makeApp() {
   var app = new Backbone.Marionette.Application();
-  app.addInitializer(function(options) {
+  app.addInitializer(function configureRegions(options) {
     $(options.documentSelector).html(Backbone.Marionette.Renderer.render("#main-tpl", {}));
     app.addRegions({
       ipsumSelectorRegion: "#ipsum-selector",
@@ -10,6 +10,13 @@ function makeApp() {
       numParagraphsSelectorRegion: "#num-paragraphs-selector",
       editorContainerRegion: "#editor-container",
       glossaryContainerRegion: "#glossary-container"
+    });
+  });
+
+  app.addInitializer(function fetchManagerModel(options) {
+    app.managerModel = new Javascripsum.Models.Manager();
+    app.managerModel.fetch().success(function managerFetchSuccess() {
+      app.ipsumSelectorRegion.show(Javascripsum.Factories.makeIpsumSelectorView(app.vent, app.managerModel));
     });
   });
 
