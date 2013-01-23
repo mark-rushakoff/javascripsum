@@ -1,4 +1,4 @@
-Javascripsum.Models.Manager = Backbone.Model.extend({
+Javascripsum.Models.IpsumList = Backbone.Model.extend({
     url: "index.json",
 
     ipsums: function() {

@@ -1,6 +1,6 @@
 "use strict";
 
-function makeIpsumSelectorView(vent, managerModel) {
+function makeIpsumSelectorView(vent, ipsumList) {
   var view = new (Backbone.Marionette.ItemView.extend({
     events: {
       "change select": function(e) {
@@ -11,10 +11,10 @@ function makeIpsumSelectorView(vent, managerModel) {
       select: "select"
     },
     serializeData: function() {
-      return { ipsums: managerModel.ipsums() };
+      return { ipsums: ipsumList.ipsums() };
     },
     template: "#ipsum-selector-tpl"
-  }))({model: managerModel});
+  }))({model: ipsumList});
 
   return view;
 }

@@ -6,8 +6,8 @@ describe("Javascripsum.Views.ApplicationView", function() {
         spyOn(view, "addStylesheet");
     });
 
-    it("instantiates a Manager model", function() {
-        expect(view.model instanceof Javascripsum.Models.Manager).toBeTruthy();
+    it("instantiates an IpsumList model", function() {
+        expect(view.model instanceof Javascripsum.Models.IpsumList).toBeTruthy();
     });
 
     it("does not add anything to the root element at first", function() {

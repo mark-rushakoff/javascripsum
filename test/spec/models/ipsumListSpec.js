@@ -1,8 +1,8 @@
-describe("Javascripsum.Models.Manager", function() {
+describe("Javascripsum.Models.IpsumList", function() {
     describe("initialization", function() {
         var model;
         beforeEach(function() {
-            model = new Javascripsum.Models.Manager();
+            model = new Javascripsum.Models.IpsumList();
             model.fetch();
         });
 

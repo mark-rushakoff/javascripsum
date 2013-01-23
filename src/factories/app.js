@@ -13,10 +13,10 @@ function makeApp() {
     });
   });
 
-  app.addInitializer(function fetchManagerModel() {
-    app.managerModel = new Javascripsum.Models.Manager();
-    app.managerModel.fetch().success(function managerFetchSuccess() {
-      app.ipsumSelectorRegion.show(Javascripsum.Factories.makeIpsumSelectorView(app.vent, app.managerModel));
+  app.addInitializer(function fetchIpsumListModel() {
+    app.ipsumList = new Javascripsum.Models.IpsumList();
+    app.ipsumList.fetch().success(function ipsumListFetchSuccess() {
+      app.ipsumSelectorRegion.show(Javascripsum.Factories.makeIpsumSelectorView(app.vent, app.ipsumList));
     });
   });
 

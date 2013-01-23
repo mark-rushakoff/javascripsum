@@ -5,7 +5,7 @@ Javascripsum.Views.ApplicationView = Backbone.View.extend({
     },
 
     initialize: function() {
-        this.model = new Javascripsum.Models.Manager();
+        this.model = new Javascripsum.Models.IpsumList();
         this.model.fetch().done(_.bind(this.setUp, this));
         this.generator = new Javascripsum.Util.Generator(this.model);
     },

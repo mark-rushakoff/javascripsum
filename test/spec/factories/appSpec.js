@@ -22,7 +22,7 @@ describe("Javascripsum.Factories.makeApp", function() {
 
       mostRecentAjaxRequest().response({status: 200, responseText: "{}"});
 
-      expect(Javascripsum.Factories.makeIpsumSelectorView).toHaveBeenCalledWith(app.vent, app.managerModel);
+      expect(Javascripsum.Factories.makeIpsumSelectorView).toHaveBeenCalledWith(app.vent, app.ipsumList);
       expect(app.ipsumSelectorRegion.show).toHaveBeenCalledWith({my: "view"});
     });
   });
