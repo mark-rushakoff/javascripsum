@@ -1,5 +1,5 @@
 var Javascripsum = {
-  Initializers: {},
+  Factories: {},
   Models: {},
   Util: {},
   Views: {}
