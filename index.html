@@ -10,6 +10,7 @@
         <script type="text/javascript" src="src/javascripsum.js"></script>
         <script type="text/javascript" src="src/factories/app.js"></script>
         <script type="text/javascript" src="src/factories/ipsumSelectorView.js"></script>
+        <script type="text/javascript" src="src/factories/generatorView.js"></script>
         <script type="text/javascript" src="src/util/generator.js"></script>
         <script type="text/javascript" src="src/models/ipsumList.js"></script>
         <script type="text/javascript" src="src/models/phraseList.js"></script>
@@ -21,6 +22,7 @@
         <script id="main-tpl" type="text/template">
           <div id="ipsum-selector"></div>
           <div id="output"></div>
+          <div id="generator-container"></div>
           <div id="num-paragraphs-selector"></div>
           <div id="editor-container"></div>
           <div id="glossary-container"></div>
@@ -34,11 +36,15 @@
           </select>
         </script>
 
+        <script id="generator-tpl" type="text/template">
+          <a class="generate">Generate</a>
+        </script>
+
         <script type="text/javascript">
             $(function() {
                 window.app = new Javascripsum.Views.ApplicationView({el: $("body")});
 
-                //window.includeMarionette = true;
+                window.includeMarionette = true;
                 if (window.includeMarionette) {
                   var doc = $("<div></div>");
                   window.marionetteApp = Javascripsum.Factories.makeApp();

@@ -5,7 +5,7 @@ beforeEach(function() {
     spyOn(Backbone.Marionette.Renderer, "render").andCallFake(function(templateId) {
       var _fakeTemplateCache = _(fakeTemplateCache);
       if (!_fakeTemplateCache.has(templateId)) {
-        throw 'unexpected render call';
+        expect('this render call').toBe('stubbed for template ID: ' + templateId)
       }
 
       return _fakeTemplateCache.result(templateId);

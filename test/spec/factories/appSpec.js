@@ -1,21 +1,30 @@
 describe("Javascripsum.Factories.makeApp", function() {
+  var $target, app;
+
+  beforeEach(function() {
+    stubRender("#main-tpl", 'my main template');
+    stubRender('#generator-tpl', 'generator goes here');
+    $target = $("<div></div>");
+    app = Javascripsum.Factories.makeApp();
+  });
+
   describe("#start", function() {
     it("renders the main template into the given selector", function() {
-      stubRender("#main-tpl", 'my main template');
-      var $target = $("<div></div>");
-      var app = Javascripsum.Factories.makeApp();
       app.start({documentSelector: $target});
 
       expect($target.html()).toBe("my main template");
+    });
+
+    it("puts a generator view in the generator region", function() {
+      stubRender('#main-tpl', '<div><div id="generator-container"></div></div>');
+      app.start({documentSelector: $target});
+
+      expect($target.find("#generator-container").text()).toBe("generator goes here");
     });
   });
 
   describe("after the ipsum list fetch completes", function() {
     it("puts an ipsum selector view in the ipsum selector region", function() {
-      stubRender("#main-tpl", 'my main template');
-      var $target = $("<div></div>");
-      var app = Javascripsum.Factories.makeApp();
-
       spyOn(Javascripsum.Factories, "makeIpsumSelectorView").andReturn({my: "view"});
       app.start({documentSelector: $target});
       spyOn(app.ipsumSelectorRegion, "show");
