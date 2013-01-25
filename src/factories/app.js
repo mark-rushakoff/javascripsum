@@ -15,7 +15,7 @@ function makeApp() {
       ipsumSelectorRegion: makeRegionHash("#ipsum-selector"),
       generatorRegion: makeRegionHash("#generator-container"),
       outputRegion: makeRegionHash("#output-container"),
-      numParagraphsSelectorRegion: makeRegionHash("#num-paragraphs-selector"),
+      paragraphCountRegion: makeRegionHash("#paragraph-count-container"),
       editorContainerRegion: makeRegionHash("#editor-container"),
       glossaryContainerRegion: makeRegionHash("#glossary-container")
     });
@@ -30,6 +30,7 @@ function makeApp() {
 
   app.addInitializer(function () {
     app.generatorRegion.show(Javascripsum.Factories.makeGeneratorView(app.vent));
+    app.paragraphCountRegion.show(Javascripsum.Factories.makeParagraphCountView(app.vent));
   });
 
   app.addInitializer(function fetchIpsumListModel() {
