@@ -5,6 +5,7 @@ describe("Javascripsum.Factories.makeApp", function() {
     stubRender("#main-tpl", 'my main template');
     stubRender('#generator-tpl', 'generator goes here');
     stubRender('#paragraph-count-tpl', 'paragraph count goes here');
+    stubRender('#output-tpl', 'output goes here');
     $target = $("<div></div>");
     app = Javascripsum.Factories.makeApp();
   });
@@ -28,6 +29,13 @@ describe("Javascripsum.Factories.makeApp", function() {
       app.start({documentSelector: $target});
 
       expect($target.find("#paragraph-count-container").text()).toBe("paragraph count goes here");
+    });
+
+    it("puts an output view in the output region", function() {
+      makeContainer("output-container");
+      app.start({documentSelector: $target});
+
+      expect($target.find("#output-container").text()).toBe("output goes here");
     });
 
     function makeContainer(divId) {

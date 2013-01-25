@@ -31,6 +31,7 @@ function makeApp() {
   app.addInitializer(function () {
     app.generatorRegion.show(Javascripsum.Factories.makeGeneratorView(app.vent));
     app.paragraphCountRegion.show(Javascripsum.Factories.makeParagraphCountView(app.vent));
+    app.outputRegion.show(Javascripsum.Factories.makeOutputView(app.vent));
   });
 
   app.addInitializer(function fetchIpsumListModel() {
