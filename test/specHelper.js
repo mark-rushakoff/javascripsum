@@ -1,6 +1,7 @@
 var fakeTemplateCache;
 beforeEach(function() {
     jasmine.Ajax.useMock();
+    clearAjaxRequests();
     fakeTemplateCache = {};
     spyOn(Backbone.Marionette.Renderer, "render").andCallFake(function(templateId) {
       var _fakeTemplateCache = _(fakeTemplateCache);
