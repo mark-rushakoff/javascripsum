@@ -31,13 +31,16 @@ function makeApp() {
   app.addInitializer(function () {
     app.generatorRegion.show(Javascripsum.Factories.makeGeneratorView(app.vent));
     app.paragraphCountRegion.show(Javascripsum.Factories.makeParagraphCountView(app.vent));
-    app.outputRegion.show(Javascripsum.Factories.makeOutputView(app.vent));
+
+    app.phraseListController = Javascripsum.Factories.makePhraseListController(app.vent, app.outputRegion);
   });
 
   app.addInitializer(function fetchIpsumListModel() {
     app.ipsumList = new Javascripsum.Models.IpsumList();
     app.ipsumList.fetch().success(function ipsumListFetchSuccess() {
-      app.ipsumSelectorRegion.show(Javascripsum.Factories.makeIpsumSelectorView(app.vent, app.ipsumList));
+      var ipsumSelectorView = Javascripsum.Factories.makeIpsumSelectorView(app.vent, app.ipsumList);
+      app.ipsumSelectorRegion.show(ipsumSelectorView);
+      ipsumSelectorView.triggerSelection();
     });
   });
 

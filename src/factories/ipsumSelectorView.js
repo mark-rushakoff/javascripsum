@@ -3,8 +3,8 @@
 function makeIpsumSelectorView(vent, ipsumList) {
   var view = new (Backbone.Marionette.ItemView.extend({
     events: {
-      "change select": function(e) {
-        vent.trigger("ipsum:selected", view.ui.select.val());
+      "change select": function() {
+        view.triggerSelection();
       }
     },
     ui: {
@@ -13,7 +13,11 @@ function makeIpsumSelectorView(vent, ipsumList) {
     serializeData: function() {
       return { ipsums: ipsumList.ipsums() };
     },
-    template: "#ipsum-selector-tpl"
+    template: "#ipsum-selector-tpl",
+
+    triggerSelection: function() {
+      vent.trigger("ipsum:selected", view.ui.select.val());
+    }
   }))({model: ipsumList});
 
   return view;

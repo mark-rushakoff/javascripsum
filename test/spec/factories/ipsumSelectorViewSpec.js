@@ -1,5 +1,5 @@
 describe("Javascripsum.Factories.makeIpsumSelectorView", function() {
-  it("triggers ipsum:selected on the vent when the select changes", function() {
+  it("triggers ipsum:selected on the vent when the select changes or when calling triggerSelection", function() {
     stubRender("#ipsum-selector-tpl",
                "<select><option>Cats</option><option>Dogs</option></select>");
 
@@ -15,6 +15,11 @@ describe("Javascripsum.Factories.makeIpsumSelectorView", function() {
     view.$("option:first-child").prop("selected", true);
     view.$("select").trigger("change");
 
+    expect(selectionSpy).toHaveBeenCalledWith("Cats");
+
+    selectionSpy.reset();
+
+    view.triggerSelection();
     expect(selectionSpy).toHaveBeenCalledWith("Cats");
   });
 });

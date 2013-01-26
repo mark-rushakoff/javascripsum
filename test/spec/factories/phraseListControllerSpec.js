@@ -25,6 +25,7 @@ describe("Javascripsum.Factories.makePhraseListController", function() {
       });
 
       it("renders a new outputView", function() {
+        expect(Javascripsum.Factories.makeOutputView).toHaveBeenCalledWith(vent);
         expect(outputRegion.show).toHaveBeenCalledWith({output: "view"});
       });
     });

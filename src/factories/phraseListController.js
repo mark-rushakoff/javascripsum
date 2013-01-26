@@ -15,7 +15,7 @@ function makePhraseListController(vent, outputRegion) {
   }
 
   function onPhraseListFetched() {
-    outputRegion.show(Javascripsum.Factories.makeOutputView());
+    outputRegion.show(Javascripsum.Factories.makeOutputView(vent));
   }
 }
 

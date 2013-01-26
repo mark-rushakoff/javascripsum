@@ -31,11 +31,15 @@ describe("Javascripsum.Factories.makeApp", function() {
       expect($target.find("#paragraph-count-container").text()).toBe("paragraph count goes here");
     });
 
-    it("puts an output view in the output region", function() {
-      makeContainer("output-container");
+    it("has a phraseListController", function() {
+      var phraseListController = {output: "region"};
+      spyOn(Javascripsum.Factories, "makePhraseListController").andReturn(phraseListController);
+
       app.start({documentSelector: $target});
 
-      expect($target.find("#output-container").text()).toBe("output goes here");
+      expect(app.phraseListController).toBe(phraseListController);
+      expect(Javascripsum.Factories.makePhraseListController).toHaveBeenCalledWith(app.vent, app.outputRegion);
+      expect(app.outputRegion).toBeDefined();
     });
 
     function makeContainer(divId) {
@@ -44,15 +48,17 @@ describe("Javascripsum.Factories.makeApp", function() {
   });
 
   describe("after the ipsum list fetch completes", function() {
-    it("puts an ipsum selector view in the ipsum selector region", function() {
-      spyOn(Javascripsum.Factories, "makeIpsumSelectorView").andReturn({my: "view"});
+    it("puts an ipsum selector view in the ipsum selector region and calls triggerSelection", function() {
+      var fakeIpsumSelectorView = jasmine.createSpyObj("ipsum view", ["triggerSelection"]);
+      spyOn(Javascripsum.Factories, "makeIpsumSelectorView").andReturn(fakeIpsumSelectorView);
       app.start({documentSelector: $target});
       spyOn(app.ipsumSelectorRegion, "show");
 
       mostRecentAjaxRequest().response({status: 200, responseText: "{}"});
 
       expect(Javascripsum.Factories.makeIpsumSelectorView).toHaveBeenCalledWith(app.vent, app.ipsumList);
-      expect(app.ipsumSelectorRegion.show).toHaveBeenCalledWith({my: "view"});
+      expect(app.ipsumSelectorRegion.show).toHaveBeenCalledWith(fakeIpsumSelectorView);
+      expect(fakeIpsumSelectorView.triggerSelection).toHaveBeenCalled();
     });
   });
 });

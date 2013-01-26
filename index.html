@@ -54,15 +54,10 @@
 
         <script type="text/javascript">
             $(function() {
-                window.app = new Javascripsum.Views.ApplicationView({el: $("body")});
-
-                window.includeMarionette = true;
-                if (window.includeMarionette) {
-                  var doc = $("<div></div>");
-                  window.marionetteApp = Javascripsum.Factories.makeApp();
-                  window.marionetteApp.start({documentSelector: doc});
-                  $("body").append(doc);
-                }
+              var doc = $("<div></div>");
+              window.marionetteApp = Javascripsum.Factories.makeApp();
+              window.marionetteApp.start({documentSelector: doc});
+              $("body").append(doc);
             });
         </script>
     </head>
