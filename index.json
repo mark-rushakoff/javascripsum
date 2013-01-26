@@ -1,5 +1,6 @@
 {
-    "ipsums": [
-        { "name": "traditional", "hasCss": false }
-    ]
+  "ipsums": [
+    { "name": "traditional", "hasCss": false },
+    { "name": "javascript", "hasCss": false }
+  ]
 }

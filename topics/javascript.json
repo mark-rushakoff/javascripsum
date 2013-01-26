@@ -1,0 +1,16 @@
+{
+  "phrases": [ 
+    {"phrase": "Crockford", "url": "http://en.wikipedia.org/wiki/Douglas_Crockford" },
+    {"phrase": "V8", "url": "http://en.wikipedia.org/wiki/V8_(JavaScript_engine)" },
+    {"phrase": "closure", "url": "https://developer.mozilla.org/en-US/docs/JavaScript/Guide/Closures" },
+    {"phrase": "function", "url": "https://developer.mozilla.org/en-US/docs/JavaScript/Reference/Global_Objects/Function" },
+    {"phrase": "jQuery", "url": "http://jquery.com/" },
+    {"phrase": "minify", "url": "http://en.wikipedia.org/wiki/Minification_(programming)" },
+    {"phrase": "node.js", "url": "http://nodejs.org/" },
+    {"phrase": "prototype", "url": "https://developer.mozilla.org/en-US/docs/JavaScript/Reference/Global_Objects/Object/prototype" },
+    {"phrase": "var", "url": "https://developer.mozilla.org/en-US/docs/JavaScript/Reference/Statements/var" }
+  ],
+  "editors": [
+    {"name": "Mark Rushakoff", "url": "https://github.com/mark-rushakoff"}
+  ]
+}
