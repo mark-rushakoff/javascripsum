@@ -32,7 +32,12 @@ function makeApp() {
     app.generatorRegion.show(Javascripsum.Factories.makeGeneratorView(app.vent));
     app.paragraphCountRegion.show(Javascripsum.Factories.makeParagraphCountView(app.vent));
 
-    app.phraseListController = Javascripsum.Factories.makePhraseListController(app.vent, app.outputRegion, app.editorRegion);
+    app.phraseListController = Javascripsum.Factories.makePhraseListController(
+      app.vent,
+      app.outputRegion,
+      app.editorRegion,
+      app.glossaryRegion
+    );
   });
 
   app.addInitializer(function fetchIpsumListModel() {

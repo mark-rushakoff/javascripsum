@@ -39,7 +39,12 @@ describe("Javascripsum.Factories.makeApp", function() {
       app.start({documentSelector: $target});
 
       expect(app.phraseListController).toBe(phraseListController);
-      expect(Javascripsum.Factories.makePhraseListController).toHaveBeenCalledWith(app.vent, app.outputRegion);
+      expect(Javascripsum.Factories.makePhraseListController).toHaveBeenCalledWith(
+        app.vent,
+        app.outputRegion,
+        app.editorRegion,
+        app.glossaryRegion
+      );
       expect(app.outputRegion).toBeDefined();
     });
 

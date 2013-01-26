@@ -1,12 +1,13 @@
 describe("Javascripsum.Factories.makePhraseListController", function() {
   describe("when ipsum:selected is triggered", function() {
-    var vent, ctrl, outputRegion, editorRegion;
+    var vent, ctrl, outputRegion, editorRegion, glossaryRegion;
 
     beforeEach(function() {
       outputRegion = jasmine.createSpyObj("outputRegion", ["show"]);
       editorRegion = jasmine.createSpyObj("editorRegion", ["show"]);
+      glossaryRegion = jasmine.createSpyObj("glossaryRegion", ["show"]);
       vent = new Backbone.Marionette.EventAggregator();
-      ctrl = makePhraseListController(vent, outputRegion, editorRegion);
+      ctrl = makePhraseListController(vent, outputRegion, editorRegion, glossaryRegion);
 
       vent.trigger('ipsum:selected', 'foobar');
     });
@@ -19,6 +20,7 @@ describe("Javascripsum.Factories.makePhraseListController", function() {
       beforeEach(function() {
         spyOn(Javascripsum.Factories, "makeOutputView").andReturn({output: "view"});
         spyOn(Javascripsum.Factories, "makeEditorView").andReturn({editor: "view"});
+        spyOn(Javascripsum.Factories, "makeGlossaryView").andReturn({glossary: "view"});
         var resp = {
           phrases: [],
           editors: []
@@ -35,6 +37,11 @@ describe("Javascripsum.Factories.makePhraseListController", function() {
       it("renders a new editorView", function() {
         expect(Javascripsum.Factories.makeEditorView).toHaveBeenCalledWith(ctrl.model);
         expect(editorRegion.show).toHaveBeenCalledWith({editor: "view"});
+      });
+
+      it("renders a new glossaryView", function() {
+        expect(Javascripsum.Factories.makeGlossaryView).toHaveBeenCalledWith(ctrl.model);
+        expect(glossaryRegion.show).toHaveBeenCalledWith({glossary: "view"});
       });
     });
   });

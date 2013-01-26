@@ -15,6 +15,7 @@
         <script type="text/javascript" src="src/factories/outputView.js"></script>
         <script type="text/javascript" src="src/factories/phraseListController.js"></script>
         <script type="text/javascript" src="src/factories/editorView.js"></script>
+        <script type="text/javascript" src="src/factories/glossaryView.js"></script>
         <script type="text/javascript" src="src/util/generator.js"></script>
         <script type="text/javascript" src="src/models/ipsumList.js"></script>
         <script type="text/javascript" src="src/models/phraseList.js"></script>
@@ -67,6 +68,25 @@
               </li>
             <% }); %>
           </ul>
+        </script>
+
+        <script id="glossary-tpl" type="text/template">
+          <dl>
+          <% _.each(phrases, function(phrase) { %>
+            <dt>
+              <% if (phrase.url) { %>
+                <a href="<%= phrase.url %>">
+                  <%= phrase.phrase %>
+                </a>
+              <% } else { %>
+                <%= phrase.phrase %>
+              <% } %>
+            </dt>
+            <dd>
+              <%= phrase.definition %>
+            </dd>
+          <% }) %>
+          </dl>
         </script>
 
         <script type="text/javascript">
