@@ -21,11 +21,12 @@ describe("Javascripsum.Factories.makePhraseListController", function() {
           phrases: [],
           editors: []
         };
+        vent.trigger("set:paragraphCount", 5);
         mostRecentAjaxRequest().response({status: 200, responseText: JSON.stringify(resp)});
       });
 
       it("renders a new outputView", function() {
-        expect(Javascripsum.Factories.makeOutputView).toHaveBeenCalledWith(vent);
+        expect(Javascripsum.Factories.makeOutputView).toHaveBeenCalledWith(vent, 5, ctrl.model);
         expect(outputRegion.show).toHaveBeenCalledWith({output: "view"});
       });
     });

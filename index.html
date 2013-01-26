@@ -49,7 +49,9 @@
         </script>
 
         <script id="output-tpl" type="text/template">
-          <%= _.uniqueId() %>
+          <% _.each(paragraphs, function(paragraph) { %>
+            <p><%= paragraph %></p>
+          <% }); %>
         </script>
 
         <script type="text/javascript">

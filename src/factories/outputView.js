@@ -1,21 +1,19 @@
 "use strict";
 
-function makeOutputView(vent) {
-  var view = new (Backbone.Marionette.ItemView.extend({
+function makeOutputView(vent, numParagraphs, phraseList) {
+  var generator = new Javascripsum.Util.Generator(phraseList),
+  view = new (Backbone.Marionette.ItemView.extend({
     initialize: function() {
       this.listenTo(vent, "out:generate", function() { view.render(); });
+      this.listenTo(vent, "set:paragraphCount", function(n) { numParagraphs = n; });
     },
-    // events: {
-      // "change .num-paragraphs": function() {
-        // vent.trigger("set:paragraphCount", +view.ui.numParagraphs.val());
-      // }
-    // },
-    // ui: {
-      // numParagraphs: ".num-paragraphs"
-    // },
-    // serializeData: function() {
-      // return { ipsums: ipsumList.ipsums() };
-    // },
+    serializeData: function() {
+      var paragraphs = [];
+      _(numParagraphs).times(function() {
+        paragraphs.push(generator.paragraph());
+      });
+      return { paragraphs: paragraphs };
+    },
     template: "#output-tpl"
   }))();
 

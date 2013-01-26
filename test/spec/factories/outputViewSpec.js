@@ -3,7 +3,7 @@ describe("Javascripsum.Factories.outputView", function() {
     stubRender("#output-tpl", "");
 
     var vent = new Backbone.Marionette.EventAggregator(),
-    view = makeOutputView(vent);
+    view = makeOutputView(vent, 0, new Backbone.Model());
     spyOn(view, 'render');
 
     vent.trigger('out:generate');
@@ -15,7 +15,7 @@ describe("Javascripsum.Factories.outputView", function() {
     stubRender("#output-tpl", "the output");
 
     var vent = new Backbone.Marionette.EventAggregator(),
-    view = makeOutputView(vent);
+    view = makeOutputView(vent, 0, new Backbone.Model());
 
     view.render();
 

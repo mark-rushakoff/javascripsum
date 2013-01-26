@@ -1,9 +1,13 @@
 "use strict";
 
 function makePhraseListController(vent, outputRegion) {
-  var ctrl = new (Backbone.Marionette.ItemView.extend({
+  var numParagraphs = 3,
+  ctrl = new (Backbone.Marionette.ItemView.extend({
     initialize: function() {
       this.listenTo(vent, "ipsum:selected", onIpsumSelected);
+      this.listenTo(vent, "set:paragraphCount", function(n) {
+        numParagraphs = n;
+      });
     }
   }))();
 
@@ -15,7 +19,7 @@ function makePhraseListController(vent, outputRegion) {
   }
 
   function onPhraseListFetched() {
-    outputRegion.show(Javascripsum.Factories.makeOutputView(vent));
+    outputRegion.show(Javascripsum.Factories.makeOutputView(vent, numParagraphs, ctrl.model));
   }
 }
 
