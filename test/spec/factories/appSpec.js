@@ -6,6 +6,7 @@ describe("Javascripsum.Factories.makeApp", function() {
     stubRender('#generator-tpl', 'generator goes here');
     stubRender('#paragraph-count-tpl', 'paragraph count goes here');
     stubRender('#output-tpl', 'output goes here');
+    stubRender('#editor-tpl', 'editor goes here');
     $target = $("<div></div>");
     app = Javascripsum.Factories.makeApp();
   });

@@ -16,8 +16,8 @@ function makeApp() {
       generatorRegion: makeRegionHash("#generator-container"),
       outputRegion: makeRegionHash("#output-container"),
       paragraphCountRegion: makeRegionHash("#paragraph-count-container"),
-      editorContainerRegion: makeRegionHash("#editor-container"),
-      glossaryContainerRegion: makeRegionHash("#glossary-container")
+      editorRegion: makeRegionHash("#editor-container"),
+      glossaryRegion: makeRegionHash("#glossary-container")
     });
 
     function makeRegionHash(selector) {
@@ -32,7 +32,7 @@ function makeApp() {
     app.generatorRegion.show(Javascripsum.Factories.makeGeneratorView(app.vent));
     app.paragraphCountRegion.show(Javascripsum.Factories.makeParagraphCountView(app.vent));
 
-    app.phraseListController = Javascripsum.Factories.makePhraseListController(app.vent, app.outputRegion);
+    app.phraseListController = Javascripsum.Factories.makePhraseListController(app.vent, app.outputRegion, app.editorRegion);
   });
 
   app.addInitializer(function fetchIpsumListModel() {

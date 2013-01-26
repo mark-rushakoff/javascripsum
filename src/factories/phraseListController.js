@@ -1,6 +1,6 @@
 "use strict";
 
-function makePhraseListController(vent, outputRegion) {
+function makePhraseListController(vent, outputRegion, editorRegion) {
   var numParagraphs = 3,
   ctrl = new (Backbone.Marionette.ItemView.extend({
     initialize: function() {
@@ -20,6 +20,7 @@ function makePhraseListController(vent, outputRegion) {
 
   function onPhraseListFetched() {
     outputRegion.show(Javascripsum.Factories.makeOutputView(vent, numParagraphs, ctrl.model));
+    editorRegion.show(Javascripsum.Factories.makeEditorView(ctrl.model));
   }
 }
 

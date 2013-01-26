@@ -14,6 +14,7 @@
         <script type="text/javascript" src="src/factories/paragraphCountView.js"></script>
         <script type="text/javascript" src="src/factories/outputView.js"></script>
         <script type="text/javascript" src="src/factories/phraseListController.js"></script>
+        <script type="text/javascript" src="src/factories/editorView.js"></script>
         <script type="text/javascript" src="src/util/generator.js"></script>
         <script type="text/javascript" src="src/models/ipsumList.js"></script>
         <script type="text/javascript" src="src/models/phraseList.js"></script>
@@ -52,6 +53,20 @@
           <% _.each(paragraphs, function(paragraph) { %>
             <p><%= paragraph %></p>
           <% }); %>
+        </script>
+
+        <script id="editor-tpl" type="text/template">
+          <ul>
+            <% _.each(editors, function(editor) { %>
+              <li>
+                <% if (editor.url) { %>
+                  <a href="<%= editor.url %>"><%= editor.name %></a>
+                <% } else { %>
+                  <%= editor.name %>
+                <% } %>
+              </li>
+            <% }); %>
+          </ul>
         </script>
 
         <script type="text/javascript">
