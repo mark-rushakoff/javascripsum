@@ -11,7 +11,7 @@ describe("Javascripsum.Factories.makePhraseListController", function() {
     });
 
     it("fetches a new phraseList", function() {
-      expect(mostRecentAjaxRequest().url).toBe("topics/foobar.json");
+      expect(mostRecentAjaxRequest().url).toBe("ipsums/foobar.json");
     });
 
     describe("when the phraseList fetch completes", function() {

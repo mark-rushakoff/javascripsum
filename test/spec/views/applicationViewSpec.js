@@ -78,7 +78,7 @@ describe("Javascripsum.Views.ApplicationView", function() {
                     clearAjaxRequests();
                     $select.val("other").trigger("change");
                     expect(view.phraseList.id).toBe("other");
-                    expect(mostRecentAjaxRequest().url).toBe("topics/other.json");
+                    expect(mostRecentAjaxRequest().url).toBe("ipsums/other.json");
                 });
             });
         });

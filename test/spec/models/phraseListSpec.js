@@ -11,7 +11,7 @@ describe("Javascripsum.Models.PhraseList", function() {
         });
 
         it("fetches from the right url", function() {
-            expect(mostRecentAjaxRequest().url).toBe("topics/fruit.json");
+            expect(mostRecentAjaxRequest().url).toBe("ipsums/fruit.json");
         });
 
         describe("once the fetch completes", function() {
