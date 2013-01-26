@@ -10,9 +10,6 @@ function makeParagraphCountView(vent) {
     ui: {
       numParagraphs: ".num-paragraphs"
     },
-    // serializeData: function() {
-      // return { ipsums: ipsumList.ipsums() };
-    // },
     template: "#paragraph-count-tpl"
   }))();
 

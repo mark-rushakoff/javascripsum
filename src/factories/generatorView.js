@@ -7,12 +7,6 @@ function makeGeneratorView(vent) {
         vent.trigger("out:generate");
       }
     },
-    // ui: {
-      // select: "select"
-    // },
-    // serializeData: function() {
-      // return { ipsums: ipsumList.ipsums() };
-    // },
     template: "#generator-tpl"
   }))();
 
