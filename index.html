@@ -1,10 +1,15 @@
-<html>
+<!DOCTYPE html>
+<html lang="en">
     <head>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" type="text/css" href="vendor/css/bootstrap.min.css">
+        <link rel="stylesheet" type="text/css" href="vendor/css/bootstrap-responsive.min.css">
         <script type="text/javascript" src="//ajax.googleapis.com/ajax/libs/jquery/1.9.0/jquery.min.js"></script>
         <script type="text/javascript" src="vendor/underscore.min.js"></script>
         <script type="text/javascript" src="vendor/underscore.string.min.js"></script>
         <script type="text/javascript" src="vendor/backbone.min.js"></script>
         <script type="text/javascript" src="vendor/backbone.marionette.min.js"></script>
+        <script type="text/javascript" src="vendor/bootstrap.min.js"></script>
 
         <script type="text/javascript" src="src/bootstrap.js"></script>
         <script type="text/javascript" src="src/javascripsum.js"></script>
@@ -23,9 +28,9 @@
 
         <script id="main-tpl" type="text/template">
           <div id="ipsum-selector"></div>
-          <div id="output-container"></div>
-          <div id="generator-container"></div>
           <div id="paragraph-count-container"></div>
+          <div id="generator-container"></div>
+          <div id="output-container"></div>
           <div id="editor-container"></div>
           <div id="glossary-container"></div>
         </script>
@@ -39,7 +44,7 @@
         </script>
 
         <script id="generator-tpl" type="text/template">
-          <a class="generate">Generate</a>
+          <a class="generate btn btn-primary">Generate</a>
         </script>
 
         <script id="paragraph-count-tpl" type="text/template">
@@ -90,10 +95,16 @@
               var doc = $("<div></div>");
               window.marionetteApp = Javascripsum.Factories.makeApp();
               window.marionetteApp.start({documentSelector: doc});
-              $("body").append(doc);
+              $("#main").append(doc);
             });
         </script>
     </head>
     <body>
+      <div class="container">
+        <div id="main"></div>
+        <div class="footer">
+          &copy; 2012-2013 Mark Rushakoff
+        </div>
+      </div>
     </body>
 </html>
