@@ -20,8 +20,13 @@ function makePhraseListController(vent, outputRegion, editorRegion, glossaryRegi
 
   function onPhraseListFetched() {
     outputRegion.show(Javascripsum.Factories.makeOutputView(vent, numParagraphs, ctrl.model));
-    editorRegion.show(Javascripsum.Factories.makeEditorView(ctrl.model));
     glossaryRegion.show(Javascripsum.Factories.makeGlossaryView(ctrl.model));
+    var editors = ctrl.model.editors();
+    if (editors && editors.length > 0) {
+      editorRegion.show(Javascripsum.Factories.makeEditorView(ctrl.model));
+    } else {
+      editorRegion.close();
+    }
   }
 }
 
