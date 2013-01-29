@@ -49,8 +49,10 @@
             </div>
           </div>
           <div id="output-container"></div>
-          <div id="glossary-container"></div>
-          <div id="editor-container"></div>
+          <div class="row">
+            <div id="glossary-container" class="span9"></div>
+            <div id="editor-container" class="span3"></div>
+          </div>
         </script>
 
         <script id="ipsum-selector-tpl" type="text/template">
@@ -78,48 +80,39 @@
         </script>
 
         <script id="editor-tpl" type="text/template">
-          <div class="row">
-            <div class="span4 offset4">
-              <h4>Editors</h4>
-              <ul>
-                <% _.each(editors, function(editor) { %>
-                  <li>
-                    <% if (editor.url) { %>
-                      <a href="<%= editor.url %>"><%= editor.name %></a>
-                    <% } else { %>
-                      <%= editor.name %>
-                    <% } %>
-                  </li>
-                <% }); %>
-              </ul>
-            </div>
-            <div class="offset4"></div>
-          </div>
+          <h3>Editors</h3>
+          <ul>
+            <% _.each(editors, function(editor) { %>
+              <li>
+                <% if (editor.url) { %>
+                  <a href="<%= editor.url %>"><%= editor.name %></a>
+                <% } else { %>
+                  <%= editor.name %>
+                <% } %>
+              </li>
+            <% }); %>
+          </ul>
         </script>
 
         <script id="glossary-tpl" type="text/template">
-          <div class="row">
-            <div class="span4 offset4 well well-small">
-              <h3>Glossary</h3>
-              <dl>
-              <% _.each(phrases, function(phrase) { %>
-                <dt>
-                  <% if (phrase.url) { %>
-                    <a href="<%= phrase.url %>">
-                      <%= phrase.phrase %>
-                    </a>
-                  <% } else { %>
-                    <%= phrase.phrase %>
-                  <% } %>
-                </dt>
-                <dd>
-                  <%= phrase.definition %>
-                </dd>
-              <% }) %>
-              </dl>
-            </div>
-            <div class="offset4"></div>
-          </div>
+          <h3>Glossary</h3>
+          <dl>
+          <% _.each(phrases, function(phrase) { %>
+            <dt>
+              <% if (phrase.url) { %>
+                <a href="<%= phrase.url %>">
+                  <%= phrase.phrase %>
+                </a>
+              <% } else { %>
+                <%= phrase.phrase %>
+              <% } %>
+            </dt>
+            <dd>
+              <%= phrase.definition %>
+            </dd>
+          <% }) %>
+          </dl>
+        </div>
         </script>
 
         <script type="text/javascript">
